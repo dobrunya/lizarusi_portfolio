@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+    get '/home' => "home#index"
+    get '/htmls' => "htmls#index", as: :htmls
+    get '/htmls/upload' => "htmls#create", as: :upload_html
+    post '/htmls/save' => "htmls#new", as: :save_html
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,5 @@
+<%= form_tag('/admin/htmls/save', method: :post, :multipart => true) do %>
+    <%= label_tag :page %>
+    <%= file_field_tag :page %>
+    <%= submit_tag "Create" %>
+<% end %>
