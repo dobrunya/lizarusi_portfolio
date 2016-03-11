@@ -1,0 +1,13 @@
+<h1></h1>
+<%= form_for :project do |p| %>
+  <%= p.label :title %>
+  <%= p.text_field :title %>
+
+  <%= p.fields_for :html_page do |pp| %>
+    <div>
+      <%= pp.label :html %>
+      <%= pp.file_field :html %>
+    </div>
+  <% end %>
+  <%= p.submit "Create", class: "waves-effect waves-light btn admin_sub-but"  %>
+<% end %>
