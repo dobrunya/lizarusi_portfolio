@@ -1,47 +1,46 @@
-class Admin::ProjectsController < Admin::DashboardController
-  def index
-    @projects = Project.all
-  end
-  def new
-    @project = Project.new
-  end
+module Admin
+  class ProjectsController < Admin::DashboardController
 
-  def destroy
-    @project = Project.find(params[:id])
-    if @project
-      @project.delete
-
+    def index
+      @projects = Project.all
     end
-    redirect_to admin_projects_path
-  end
 
-  def create
-    p project_params
-    @project = Project.new(project_params)
-
-    if @project.save
-      # flash[:success] = "Welcome to the Sample App!"
-      redirect_to [:admin, @project]
-    else
-      render 'new'
+    def new
+      @project = Project.new
     end
-  end
 
-  def edit
-    @project = Project.find(params[:id])
-  end
+    def destroy
+      @project = Project.find(params[:id])
+      if @project
+        @project.delete
 
-  def show
-    @project = Project.find(params[:id])
-  end
+      end
+      redirect_to admin_projects_path
+    end
 
+    def create
+      p project_params
+      @project = Project.new(project_params)
+      if @project.save
+        # flash[:success] = "Welcome to the Sample App!"
+        redirect_to [:admin, @project]
+      else
+        render 'new'
+      end
+    end
 
+    def edit
+      @project = Project.find(params[:id])
+    end
 
-  private
+    def show
+      @project = Project.find(params[:id])
+    end
 
-  def project_params
+    private
 
-      params.require(:project)
-
+    def project_params
+      params.require(:project).permit(:title, html_pages_attributes: [:html])
+    end
   end
 end
