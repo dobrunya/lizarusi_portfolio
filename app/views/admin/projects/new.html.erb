@@ -9,5 +9,6 @@
       <%= pp.file_field :html, name: 'project[html_pages_attributes][][html]' %>
     </div>
   <% end %>
+  <%= p.file_field :file, name: 'project[file]'  %>
   <%= p.submit "Create", class: "waves-effect waves-light btn admin_sub-but"  %>
 <% end %>
