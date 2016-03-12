@@ -21,7 +21,12 @@ module Admin
       @project = Project.new(project_params)
       if @project.save
         # flash[:success] = "Welcome to the Sample App!"
+        p '--------------------------------------------------'
+        p params[:project]
+        p '--------------------------------------------------'
+        NoActiveRecordUploader.new(@project.title, params[:project][:file]).save
         redirect_to [:admin, @project]
+
       else
         render 'new'
       end
