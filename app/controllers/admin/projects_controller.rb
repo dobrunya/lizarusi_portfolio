@@ -12,14 +12,12 @@ module Admin
     def destroy
       @project = Project.find(params[:id])
       if @project
-        @project.delete
-
+        @project.destroy
       end
       redirect_to admin_projects_path
     end
 
     def create
-      p project_params
       @project = Project.new(project_params)
       if @project.save
         # flash[:success] = "Welcome to the Sample App!"

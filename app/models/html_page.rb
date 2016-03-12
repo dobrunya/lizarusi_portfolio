@@ -1,4 +1,5 @@
 class HtmlPage < ActiveRecord::Base
   mount_uploader :html, AttachmentUploader
-  has_one :project
+  belongs_to :project, class_name: 'Project'
+
 end
