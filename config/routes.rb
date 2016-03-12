@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   # get 'home' => 'pages#home'
   get 'about' => 'pages#about'
   get 'portfolio' => 'pages#portfolio'
-  # The priority is based upon order of creation: first created -> highest priority.
+
+  namespace :admin do
+    resources :projects
+    post '/projects/new' => 'projects#create'
+    get '', to: 'dashboard#index', as: '/'
+  end  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

@@ -1,0 +1,25 @@
+<h1>Projects</h1>
+<table class="striped">
+  <tbody>
+  <% if @projects.empty? %>
+    <tr>No projects yet</tr>
+  <% else %>
+    <% @projects.each do |p| %>
+      <tr>
+        <td>
+          <%= p.id %>
+        </td>
+        <td>
+          <%= p.title %>
+        </td>
+        <td>
+          <%= link_to 'Delete', admin_project_path(p.id), :method => :delete %>
+
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<a href="/admin/projects/new" class="waves-effect waves-light btn">Create new project</a>
+
