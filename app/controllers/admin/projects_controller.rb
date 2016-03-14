@@ -20,13 +20,11 @@ module Admin
     def create
       @project = Project.new(project_params)
       if @project.save
+        path_to_zip = 'public/projects/' + @project.title + '/' +  params[:project][:file].original_filename
         # flash[:success] = "Welcome to the Sample App!"
-        p '--------------------------------------------------'
-        p params[:project]
-        p '--------------------------------------------------'
         NoActiveRecordUploader.new(@project.title, params[:project][:file]).save
+        ZipService.new(path_to_zip, @project).unzip
         redirect_to [:admin, @project]
-
       else
         render 'new'
       end

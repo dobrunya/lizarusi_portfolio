@@ -1,11 +1,29 @@
-<table>
+<table class="bordered">
     <tbody>
+          <tr>
+            <td>
+              ID
+            </td>
+            <td>
+              TITLE
+            </td>
+            <td>
+              HTML
+            </td>
+          </tr>
         <tr>
             <td>
                 <%= @project.id %>
             </td>
           <td>
             <%= @project.title %>
+          </td>
+          <td>
+            <% @project.html_pages.each do |h| %>
+              <% html_name = h.html.file.file.split('/').last %>
+              <% html_link = '/projects/' + @project.title + '/' + html_name %>
+              <%= link_to "#{ html_name }", html_link %>
+            <% end %>
           </td>
         </tr>
     </tbody>

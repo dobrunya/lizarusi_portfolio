@@ -1,19 +1,34 @@
 <h1>Projects</h1>
-<table class="striped">
+<table class="bordered centered">
   <tbody>
+
   <% if @projects.empty? %>
     <tr>No projects yet</tr>
   <% else %>
+    <tr>
+      <td>ID</td>
+      <td>TITLE</td>
+      <td>HTML</td>
+      <td>ACTION</td>
+    </tr>
     <% @projects.each do |p| %>
       <tr>
         <td>
           <%= p.id %>
         </td>
         <td>
-          <%= p.title %>
+          <%= link_to p.title, "projects/#{p.id}"%>
+
         </td>
         <td>
-          <%= link_to 'Delete', admin_project_path(p.id), :method => :delete %>
+          <% p.html_pages.each do |h| %>
+              <% html_name = h.html.file.file.split('/').last %>
+              <% html_link = '/projects/' + p.title + '/' + html_name %>
+              <%= link_to "#{ html_name }", html_link %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Delete', admin_project_path(p.id), :method => :delete, class: "waves-effect waves-light btn"  %>
 
         </td>
       </tr>

@@ -1,14 +1,39 @@
-<h1></h1>
-<%= form_for :project do |p| %>
-  <%= p.label :title %>
-  <%= p.text_field :title %>
 
-  <%= p.fields_for :html_pages_attributes do |pp| %>
-    <div>
-      <%= pp.label :html %>
-      <%= pp.file_field :html, name: 'project[html_pages_attributes][][html]' %>
+<div class="row">
+  <%= form_for :project, class: "col s12" do |p| %>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= p.label :title %>
+        <%= p.text_field :title, class: "validate", id: "title" %>
+      </div>
+      <div class="input-field file-field col s12">
+        <%= p.fields_for :html_pages_attributes do |pp| %>
+            <div class="btn">
+              <span>HTML</span>
+              <%= pp.file_field :html, name: 'project[html_pages_attributes][][html]', 'multiple' => '' %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+        <% end %>
+      </div>
     </div>
+    <div class="row">
+      <div class="file-field input-field col s12">
+        <div class="btn">
+          <span>Assets</span>
+          <%= p.file_field :file, name: 'project[file]' %>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col s12">
+          <%= p.submit "Create", class: "waves-effect waves-light btn admin_sub-but"  %>
+        </div>
+      </div>
   <% end %>
-  <%= p.file_field :file, name: 'project[file]'  %>
-  <%= p.submit "Create", class: "waves-effect waves-light btn admin_sub-but"  %>
-<% end %>
+</div>

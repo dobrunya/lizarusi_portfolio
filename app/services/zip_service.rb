@@ -2,7 +2,7 @@ require 'zip'
 class ZipService
   attr_accessor :file, :project
 
-  SAVE_PATH = "#{Rails.root}/public/test"
+  SAVE_PATH = "#{Rails.root}/public/projects"
 
   def initialize(file_path, project)
     @file = file_path
@@ -10,13 +10,13 @@ class ZipService
   end
 
   def unzip
-    p "Removing directory: #{prepare_dir}"
-    p "Creating directory: #{create_dir}"
+    # p "Removing directory: #{prepare_dir}"
+    # p "Creating directory: #{create_dir}"
     p 'Starting unzip'
     Zip::File.open(file) do |zip_file|
       zip_file.each do |entry|
         puts "Extracting file #{entry.name}"
-        zip_file.extract(entry, "#{extract_path}/#{entry}") { true }
+        zip_file.extract(entry, "#{extract_path}#{entry}") { true }
       end
     end
     remove_zip
