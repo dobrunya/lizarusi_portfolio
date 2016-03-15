@@ -2,20 +2,14 @@
 <% title = "Portfolio" %>
 <%= title %>
 <% provide(:title, "Portfolio") %>
-<div class="container">
   <div class="row">
-    <div class="col m3">
-      <%= link_to "Project1" %>
+    <% @projects.each do |p| %>
+        <div class="col m4">
+          <%= link_to portfolioo_path(p.title) + '/'  do %>
+            <%= image_tag "/projects/#{p.title}/main_image.png", :style => 'width: 100%; height: auto' %>
+              <p><%= p.title %></p>
+          <% end %>
+        </div>
+    <% end %>
 
-    </div>
-    <div class="col m3">
-      <%= link_to "Project2" %>
-    </div>
-    <div class="col m3">
-      <%= link_to "Project3" %>
-    </div>
-    <div class="col m3">
-      <%= link_to "Project4" %>
-    </div>
-  </div>
 </div>

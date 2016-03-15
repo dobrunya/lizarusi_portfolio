@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # get 'home' => 'pages#home'
   get 'about' => 'pages#about'
   get 'portfolio' => 'pages#portfolio'
+  # get 'portfolio/:title' => 'projects_show#show'
+  get 'portfolio/:title/(:name)', to: 'projects_show#show', as: 'portfolioo'
 
   namespace :admin do
     resources :projects
