@@ -21,11 +21,7 @@
 
         </td>
         <td>
-          <% p.html_pages.each do |h| %>
-              <% html_name = h.html.file.file.split('/').last %>
-              <% html_link = '/projects/' + p.title + '/' + html_name %>
-              <%= link_to "#{ html_name }", html_link %>
-          <% end %>
+
         </td>
         <td>
           <%= link_to 'Delete', admin_project_path(p.id), :method => :delete, class: "waves-effect waves-light btn"  %>

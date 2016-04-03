@@ -4,3 +4,23 @@
 html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
+
+.edit {
+  &_checkbox {
+    &-aswer {
+
+    }
+    &-table {
+      width: 300px;
+      position: relative;
+
+      td {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+    }
+
+  }
+}

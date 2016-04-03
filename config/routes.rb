@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :projects
     post '/projects/new' => 'projects#create'
     get '', to: 'dashboard#index', as: '/'
+    post '/html/delete' => 'projects#delete_html'
   end  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

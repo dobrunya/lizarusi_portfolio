@@ -11,20 +11,25 @@
               HTML
             </td>
           </tr>
-        <tr>
+        <% if @project %>
+          <tr>
             <td>
-                <%= @project.id %>
+              <%= @project.id %>
             </td>
-          <td>
-            <%= @project.title %>
-          </td>
-          <td>
-            <% @project.html_pages.each do |h| %>
-              <% html_name = h.html.file.file.split('/').last %>
-              <% html_link = '/projects/' + @project.title + '/' + html_name %>
-              <%= link_to "#{ html_name }", html_link %>
-            <% end %>
-          </td>
-        </tr>
+            <td>
+              <%= @project.title %>
+            </td>
+            <td>
+              <% @project.html_pages.each do |h| %>
+                  <% if h.html.file %>
+                      <% html_name = h.html.file.file.split('/').last %>
+                      <% html_link = '/projects/' + @project.title + '/' + html_name %>
+                      <%= link_to "#{ html_name }", html_link %>
+                  <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+
     </tbody>
 </table>

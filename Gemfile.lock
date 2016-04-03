@@ -46,6 +46,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    cocoon (1.2.8)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -74,6 +75,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    material_icons (2.2.0)
+      railties (>= 3.2)
     materialize-sass (0.97.5)
       sass (~> 3.3)
     mime-types (2.99.1)
@@ -159,10 +162,12 @@ PLATFORMS
 DEPENDENCIES
   byebug
   carrierwave
+  cocoon
   coffee-rails (~> 4.1.0)
   imgkit
   jbuilder (~> 2.0)
   jquery-rails
+  material_icons
   materialize-sass
   nokogiri
   pg

@@ -2,30 +2,38 @@ require 'nokogiri'
 require 'uri'
 
 module ProjectsProcessor
-
-
-
   def self.included(base)
 
     base.send(:before_filter, :load_newsletter, :only => :show)
   end
   def html_name(path_name) #TODO
     if !path_name
-      'index.html'
+        @main_html
     else
-      if path_name.split('.').last == 'html'
-        path_name
-      else
-        path_name + '.html'
+      path_name
+    end
+  end
+
+  def find_main_html
+    project = Project.find_by(title: params[:title])
+    project.html_pages.each do |html_elem|
+      if (html_elem.main)
+        @main_html = html_elem.html.file.filename.gsub(/\.[^.]+$/, '')
+
       end
     end
   end
+
   def show
+    @project = Project.find_by(title: params[:title])
+    find_main_html
     if params[:format] == "html"
       redirect_to portfolioo_path(params[:title], params[:name])
       return
     end
-    if params[:name] == "index"
+    p @main_html
+    p params[:name]
+    if params[:name] == @main_html
       redirect_to portfolioo_path(params[:title])+'/'
       return
     end
@@ -33,7 +41,6 @@ module ProjectsProcessor
     @template_path = "public/#{@template_dir}/#{html_name(params[:name])}"
     content = render_to_string(:file => @template_path)
     @content = TemplateParser.new(request, params[:title]).parse(content)
-    p '------------------------------------------------------------------------------------'
     render :text => @content, :layout => false
   end
 
@@ -41,7 +48,6 @@ module ProjectsProcessor
 
   def load_newsletter
     # @newsletter = Projects.find(params[:title])
-    p 'roar'
   end
 
   class TemplateParser
