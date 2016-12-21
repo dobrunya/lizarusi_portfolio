@@ -6,10 +6,16 @@
     <% @projects.each do |p| %>
         <div class="col m4">
           <%= link_to portfolioo_path(p.title) + '/'  do %>
-            <%= image_tag "/projects/#{p.title}/main_image.png", :style => 'width: 100%; height: auto' %>
+              <img style="width:200px" src="<%= prepare_canvas_link(p)%>">
+              <%# image_tag "/projects/#{p.title}/main_image.png", :style => 'width: 100%; height: auto' %>
               <p><%= p.title %></p>
           <% end %>
         </div>
     <% end %>
 
+
+
 </div>
+<%# canvases = HtmlPage.joins('inner join projects as p on p.title = html_pages.title')
+                      .where('main = true').pluck(:canvas) %>
+<%# react_component('ImageRender',{ canvases: canvases, :prerender => true },) %>

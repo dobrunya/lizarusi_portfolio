@@ -10,9 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require react
+//= require react_ujs
 //= require jquery
 //= require materialize-sprockets
 //= require jquery_ujs
 // require turbolinks
 //= require cocoon
-//= require_tree .
+//= require admin/new_methods
+//= require admin/projects
+
+//= require components
+//= require components/imageRender
+// require_tree .
+//= require react
+//= require react_ujs
+//= require components

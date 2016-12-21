@@ -19,12 +19,12 @@ module ProjectsProcessor
     project.html_pages.each do |html_elem|
       if (html_elem.main)
         @main_html = html_elem.html.file.filename.gsub(/\.[^.]+$/, '')
-
       end
     end
   end
 
   def show
+    p params[:from_admin]
     @project = Project.find_by(title: params[:title])
     find_main_html
     if params[:format] == "html"
@@ -41,6 +41,7 @@ module ProjectsProcessor
     @template_path = "public/#{@template_dir}/#{html_name(params[:name])}"
     content = render_to_string(:file => @template_path)
     @content = TemplateParser.new(request, params[:title]).parse(content)
+
     render :text => @content, :layout => false
   end
 
@@ -62,7 +63,8 @@ module ProjectsProcessor
 
     def parse(content)
       content = Nokogiri::HTML(content)
-      return parse_content(parse_assets_url(content))
+      parse_content(parse_assets_url(content))
+      append_javascript(content)
     end
 
     private
@@ -77,8 +79,18 @@ module ProjectsProcessor
       content.css("link").each do |link|
         update_asset_attribute(link, "href")
       end
+      content.css("script").each do |script|
+        update_asset_attribute(script, "src")
+      end
 
       return content
+    end
+
+    def append_javascript(content)
+      script = "<script src = '/assets/generate_image.js' />"
+      script = Nokogiri::HTML::fragment(script)
+      content.at_css('head') << script
+      content
     end
 
     def parse_content(content)
@@ -101,8 +113,13 @@ module ProjectsProcessor
     end
 
     def full_url(path)
-      url = URI.parse(path)
-      return !url.scheme ? "#{self.request.scheme}://#{self.request.host_with_port}/projects/#{params[:title]}/#{url.path}" : path
+      # url = URI.parse(path)
+      unless path.include?('http')
+        path.gsub!("\\","/")
+        return  "#{self.request.scheme}://#{self.request.host_with_port}/projects/#{params[:title]}/#{path}"
+      else
+        return path
+      end
     end
   end
 end

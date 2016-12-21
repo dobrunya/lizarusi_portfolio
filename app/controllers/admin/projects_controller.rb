@@ -50,24 +50,18 @@ module Admin
 
     end
 
-    private
+      private
 
     def project_folder_changes
-      3.times do |step|
+      2.times do |step|
         begin
           case step
-            when 0 then generate_image
-            when 1 then upload_zip
-            when 2 then unzip_zip
+            when 0 then upload_zip
+            when 1 then unzip_zip
           end
         rescue
         end
       end
-    end
-
-    def generate_image
-      path_to_html = HtmlPage.where(main: true, title: @project.title).first.html.file.file
-      make_image(path_to_html)
     end
 
     def upload_zip
@@ -115,10 +109,6 @@ module Admin
 
     def project_params
       params.require(:project).permit(:title, :add,  :html_pages_attributes => [:html, :main] )
-    end
-
-    def make_image(path) #TODO
-      HardWorker.perform_async(path_to_html)
     end
 
     def title

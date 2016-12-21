@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
     post '/html/delete' => 'projects#delete_html'
   end  # The priority is based upon order of creation: first created -> highest priority.
+  post '/admin/generate_image' => 'projects_show#generate_image'
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

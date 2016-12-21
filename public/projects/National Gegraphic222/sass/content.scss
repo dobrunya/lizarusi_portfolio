@@ -1,0 +1,396 @@
+// compileCompressed: ../css/$1.css
+.ng {
+  &_content {
+    display: table;
+    margin-top: 38px;
+    border-bottom: 1px solid #eeeeee;
+    &--left, &--right {
+      display: table-cell;
+      vertical-align: top;
+    }
+    &--right {
+      width: 223px;
+      position: relative;
+      .section-name:not(:first-child) {
+        margin-top: 18px;
+      }
+
+      .popular-block, .event-block {
+        width: 100%;
+          margin: 8px 0 8px 0;
+
+      }
+      .buttons-wrapp {
+        width: 100%;
+        position: absolute;
+        bottom: 12px;
+        li {
+          display: inline-block;
+          margin-right: 6px;
+        }
+
+        font-size: 0;
+      }
+    }
+    &--left {
+      width: 940px - 223px;
+      padding-right: 25px;
+      &__inf-col {
+        padding-right: 6px;
+        margin-bottom: 12px;
+        &:nth-child(2n) {
+          padding: 0 0 0 6px;
+        }
+      }
+      &__main-content {
+
+        display: table;
+        width: 100%;
+        &--left, &--right {
+          display: table-cell;
+          vertical-align: top;
+        }
+        &--left {
+          width: 162px;
+          position: relative;
+
+        }
+        &--right {
+          position: relative;
+          padding: 0 0 0 25px;
+          width: 940px - 223px - 162px - 25px;
+          // .section-name {
+          //   position: absolute;
+          //   bottom: 8px;
+          //   // width: 940px - 223px - 162px - 25px*2;
+          // }
+          // .section-name:last-child {
+          //   margin-top: 9px;
+          // }
+          .section-name__content {
+            img {
+              max-height: 13px;
+            }
+          }
+          .latest-news {
+
+            position: absolute;
+             bottom: 8px;
+             width: 940px - 223px - 162px - 25px*2;
+          }
+          .popular-block {
+            margin-top: 14px;
+            background-color: white;
+            padding: 0;
+            max-height: none;
+            position: relative;
+            &__paginator {
+              position: absolute;
+              top: 0;
+              right: 0;
+              display: table;
+              z-index: 2000;
+
+            }
+            &__number-cell{
+
+              &--wrapp {
+                  color: inherit;
+                  border-right: 1px solid;
+                  p {
+                    color: white;
+                    font-weight: 400;
+                    font-size: 16px;
+                  }
+              }
+            }
+            &__number-cell {
+              display: table-cell;
+              vertical-align: middle;
+              padding: 5px 0;
+              color: #717171;
+              width: 26px;
+              height: 30px;
+              cursor: pointer;
+              background-color: #555555;
+
+              &:hover {
+                background-color: #fdcc05;
+                color: #fdcc05;
+
+              }
+
+            }
+
+            &__number-cell--wrapp {
+              text-align: center;
+
+
+              width: 100%;
+
+
+            }
+
+            &__image-block {
+              height: 225px;
+            }
+            &__bottom-inf {
+              margin-top: 0;
+             &--left {
+               padding: 12px 14px;
+               border-right:  1px solid #eeeeee;
+
+               p {
+                 font-size: 15px;
+                 color: #555555;
+               }
+               span {
+                 font-size: 11px;
+                 color: #555555;
+
+               }
+             }
+             &--right {
+               vertical-align: middle;
+               text-align: center;
+               width: 51px;
+             }
+             &--left, &--right {
+
+             }
+            }
+          }
+        }
+
+
+      }
+
+      &__left-menu {
+          width: 100%;
+          font-size: 0;
+          list-style: none;
+          li {
+            width: 50%;
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+          }
+          &--left-col {
+            padding-right: 4px;
+          }
+          &--right-col {
+            padding-left: 4px;
+          }
+
+          &--item {
+            border: 1px solid #eeeeee;
+            background-color: white;
+            margin-bottom: 8px;
+            height: 70px;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 7px;
+            color: #777777;
+            p {
+              text-transform: capitalize;
+              font-size: 11px;
+
+              font-weight: 700;
+            }
+          }
+          &--active {
+            background-color: #555555;
+            color: white;
+          }
+          &--image {
+            height: 45px;
+            // display: table-cell;
+            // vertical-align: middle;
+            position: relative;
+            text-align: center;
+            img {
+              position:absolute;
+              top:0;
+              bottom:0;
+              right: 0;
+              left: 0;
+              margin:auto;
+            }
+          }
+      }
+
+      &__top-menu {
+        font-size: 0;
+        li:not(:last-child){
+          margin-right: 5.812px;
+        }
+
+        li {
+
+          display: inline-block;
+          font-size: 12px;
+          font-weight: 400;
+          text-align: center;
+          min-width: 76px;
+          &:after {
+            content:'';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -10px;
+            width: 0;
+            height: 0;
+            border-top: solid 10px transparent ;
+            border-left: solid 10px transparent;
+            border-right: solid 10px transparent;
+          }
+
+          a {
+            padding: 8px 0;
+            display: inline-block;
+          }
+          &:hover {
+              text-transform: uppercase;
+              color: white;
+              background-color: #555555;
+              &:after {
+                border-top-color: #555555;
+              }
+
+          }
+
+        }
+        .big-name {
+          min-width: 96px;
+        }
+
+        .section-name {
+          width: auto;
+          height: auto;
+          padding: 0;
+
+
+        }
+      }
+
+    }
+    &__magazines {
+      .popular-block {
+        // margin-right: 15px;
+        height: auto;
+        display: table;
+        position: relative;
+        background-color: white;
+        width: 100%;
+        &__product-caption {
+          margin-top: 5px;
+          background-color: #fbfbfb;
+          height: 148px;
+          text-align: center;
+          text-transform: capitalize;
+          padding: 9px 2px;
+          border:  1px solid #eeeeee;
+          img {
+            margin-bottom: 12px;
+          }
+        }
+      }
+      .button {
+        border-width: 1px 0 0 1px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+
+    }
+    &__magazine:not(:last-child) {
+          padding-right: 10px;
+    }
+
+  }
+
+
+}
+.button {
+    height: 30px;
+    padding: 6px 1px;
+    display: table;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    &__elem {
+      cursor: pointer;
+      display: table-cell;
+      vertical-align: middle;
+      padding: 0 6px;
+      p {
+        text-transform: uppercase;;
+        font-weight: 400;
+        font-size: 11px;
+      }
+
+      &--left {
+        border-right: 1px solid #eeeeee;
+      }
+    }
+
+}
+.event {
+  &-block {
+      color: #777777;
+    width: 100%;
+    position: relative;
+    padding: 0 5px 5px 5px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+
+  }
+  &-image {
+    padding: 6px 0;
+    height: 58px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    img {
+      width: 100%;
+    }
+    &__time {
+      position: absolute;
+      bottom: 6px;
+      font-size: 0;
+      left: 8px;
+      &--icon, &--text {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &--icon {
+        height: 14px;
+        width: 14px;
+        background-size: contain;
+        background-image: url(../images/clock-white.png);
+      }
+      &--text {
+        margin-left: 5px;
+        color: white;
+        font-size: 10px;
+      }
+    }
+  }
+  &-description {
+    text-align: justify;
+
+    padding: 6px 3px 0 3px;
+    p {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+  &-head {
+    padding: 6px 0;
+    border-bottom: 1px solid #eeeeee;
+    p {
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 13px;
+    }
+  }
+}
